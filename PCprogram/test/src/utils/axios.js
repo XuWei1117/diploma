@@ -17,7 +17,7 @@ service.interceptors.request.use(config => {
 // respone拦截器
 service.interceptors.response.use(
   response => {
-    return response
+    return response.data
   },
 )
 

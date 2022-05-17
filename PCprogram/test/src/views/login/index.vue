@@ -19,7 +19,7 @@
           <el-form-item label="用户名" class="usernameCss" prop="u_name" style="margin-top:40px">
             <el-input
               type="text"
-           v-model="ruleForm.u_name"
+             v-model="ruleForm.u_name"
               autocomplete="off"
               placeholder="请输入用户名"
               
@@ -61,21 +61,22 @@ export default {
   },
   methods: {
     login() {
-      console.log(123)
       //进行参数校验
       const loginRef = this.$refs["loginRef"];
       loginRef.validate((validate) => {
         if (validate) {
           Login(this.ruleForm).then((res) => {
+            console.log(res);
             if (res.code == 200) {
+              console.log(res);
               this.$message({
                 message: res.msg,
                 type: "success",
               });
 
               setTimeout(() => {
+                console.log(123456);
                 this.$router.push("/home"); // 强制切换当前路由 path
-                loading.close();
               }, 2000);
             }
             if (res.code == 400) {
