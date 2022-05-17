@@ -1,0 +1,20 @@
+<!--pages/details/index.wxml-->
+<view  class="detail-container" wx:for="{{cardData}}" wx:key="id" bindtap="showCourse" data-id="{{item.cs_id}}">
+  <view class="detail-card">
+<view><text class="cs_name">{{item.cs_name}}</text></view>
+<text class="pub-time">{{item.cs_time}}</text>
+<view class="detail-card-bottom">
+<view class="detail-card-bottom-profile">
+<view class="profile-item">
+<image class="img"  src="{{item.t_img}}"></image>
+</view>
+<view class="techear-name">{{item.t_name}} </view>
+
+</view>
+<view class="pay-cash">
+<view class="big-word">¥{{item.cs_price}}</view>
+<view class="small-word">限售{{item.limit_buy}} 已售{{item.sold}}</view>
+</view>
+</view>
+</view>
+</view>

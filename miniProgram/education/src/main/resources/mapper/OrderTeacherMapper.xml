@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.education.mapper.OrderTeacherMapper">
+
+    <insert id="orderFinish" parameterType="com.school.education.domain.OrderTeacher">
+        insert into r_order values (null,#{r_number},#{r_img},#{r_name},#{r_price},#{r_teacher},#{r_status},#{course_id},#{user_id},#{r_video})
+    </insert>
+    <!--显示已支付的订单-->
+    <select id="showFinishOrder" resultType="com.school.education.domain.OrderTeacher" parameterType="int">
+        select * from r_order,teacher where r_order.r_teacher = teacher.t_id and r_status = 1 and user_id = #{user_id} order by r_id desc
+    </select>
+    <select id="showUnfinishOrder" resultType="com.school.education.domain.OrderTeacher" parameterType="int">
+        select * from r_order,teacher where r_order.r_teacher = teacher.t_id and r_status = 0 and user_id = #{user_id} order by r_id desc
+    </select>
+    <delete id="deleteOrder" parameterType="int">
+        delete from r_order where r_id = #{r_id} and r_status = 0
+    </delete>
+    <update id="updateOrder" parameterType="int">
+        update r_order set r_status = 1 where r_id = #{r_id}
+    </update>
+    <select id="getVideo" resultType="string" parameterType="int">
+        select  r_video from r_order where r_id = #{r_id}
+    </select>
+
+
+</mapper>

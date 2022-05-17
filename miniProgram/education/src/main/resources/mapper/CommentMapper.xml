@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.education.mapper.CommentMapper">
+    <select id="selectCommentByCourseId" parameterType="int" resultType="com.school.education.domain.Comment">
+        select cm_id,cm_name,cm_desc,cm_date,course_id,u_img from comment,user where course_id = #{course_id} and comment.user_id = user.u_id order by cm_date desc
+    </select>
+
+    <insert id="addComment" parameterType="com.school.education.domain.Comment">
+        insert into comment values (null,#{cm_name},#{cm_desc},#{cm_date},#{course_id},#{user_id})
+    </insert>
+    <delete id="deleteComment" parameterType="com.school.education.domain.Comment">
+        delete from comment where cm_id = #{cm_id} and user_id = #{user_id}
+    </delete>
+
+    <select id="selectAllByUserId" resultType="com.school.education.domain.Comment" parameterType="int">
+        select * from comment,course where user_id = #{user_id} and comment.course_id = course.cs_id order by comment.cm_date desc
+    </select>
+
+</mapper>

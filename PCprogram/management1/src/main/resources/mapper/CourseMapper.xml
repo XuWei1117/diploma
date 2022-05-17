@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.management1.mapper.CourseMapper">
+    <resultMap id="getMenu" type="com.school.management1.domain.vo.CourseVO">
+        <id column="cid" property="id"></id>
+        <result column="category_name" property="category"></result>
+        <collection property="courses" javaType="list" ofType="com.school.management1.domain.Course">
+            <id column="csid" property="cs_id"></id>
+            <result column="course_name" property="cs_name"></result>
+        </collection>
+    </resultMap>
+    <select id="courseMenu" resultMap="getMenu">
+        select cat.c_id cid,cat.c_name category_name,cs.cs_id csid,cs.cs_name course_name
+        from category cat,course cs
+        where cs.cat_id = cat.c_id;
+    </select>
+
+    <select id="courseDetail" parameterType="int" resultType="com.school.management1.domain.vo.CourseDetailVO">
+        select cs.cs_id as cs_id,
+               cs.cs_name as cs_name,
+               cs.cs_price as cs_price,
+               cs.cs_img as cs_img,
+               cs.cs_desc as cs_desc,
+               cs.limit_buy as limit_buy,
+               cs.sold as sold,
+               cs.cs_time as cs_time,
+               t.t_name as t_name,
+               t.t_desc as t_desc,
+               cs.te_id as te_id
+        from course cs,teacher t
+        where cs.te_id = t.t_id and cs_id = #{cs_id}
+    </select>
+
+    <insert id="addCourse">
+        insert into course (cs_name,cs_price,cs_img,cs_desc,cs_time,cat_id,te_id,limit_buy,sold,order_img,video)
+        values (#{cs_name},#{cs_price},#{cs_img},#{cs_desc},#{cs_time},#{cat_id},#{te_id},#{limit_buy},#{sold},#{order_img},#{video})
+    </insert>
+
+    <update id="updateCourse" parameterType="com.school.management1.domain.vo.CourseDetailVO">
+        update course set
+        <if test="cs_price != null">
+            cs_price = #{cs_price},
+        </if>
+        <if test="cs_desc != null">
+            cs_desc = #{cs_desc},
+        </if>
+        <if test="cs_time != null">
+            cs_time = #{cs_time},
+        </if>
+        <if test="te_id != null">
+            te_id = #{te_id}
+        </if>
+        where cs_id = #{cs_id}
+    </update>
+
+    <delete id="deleteCourse" parameterType="int">
+        delete from course where cs_id = #{cs_id}
+    </delete>
+
+
+
+</mapper>

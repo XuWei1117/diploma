@@ -1,0 +1,60 @@
+<!--pages/list-detail/index.wxml-->
+<view>
+  <image class="image" mode="widthFix" src="{{pageListDetailData.cs_img}}"></image>
+
+
+  <view class="cs_desc">
+    <view>
+      <text class="class-text">课程信息:</text>
+    </view>
+    <view class="word-wrap">{{pageListDetailData.cs_desc}}</view>
+  </view>
+
+  <view class="t_desc">
+    <view>
+      <text class="teacher-text">老师介绍:</text>
+    </view>
+    <view class="word-wrap">{{pageListDetailData.t_desc}}</view>
+  </view>
+  <view>
+    <van-toast id="van-toast" />
+    <view style="display: flex; justify-content: space-between;">
+      <van-cell-group class="pinglun">
+        <van-field bind:change="handleInput" value="{{ inputPingLun }}" center clearable label="评论" placeholder="请输入评论内容" border="{{ false }}" use-button-slot>
+          <van-button bind:click="handleSendBtnClick" slot="button" size="small" type="primary">
+            发送
+          </van-button>
+        </van-field>
+      </van-cell-group>
+
+    </view>
+    <van-panel>
+      <view wx:for="{{pinglun}}" wx:key="id">
+        <view style="display:flex;justify-content:space-between;">
+          <view style=" display: flex; align-self:start;margin-top: 20rpx;" >
+            <image class="touxiang" src="{{item.u_img}}"></image>
+            <text style=" color: #717171">{{item.cm_name}}</text>
+          </view>
+          
+          <view>
+            <text class="p_time">{{item.cm_date}}</text>
+          </view>
+        </view>
+       
+        <view style="margin-left:30rpx;font-size: 14px;margin-top: 20rpx;"> <text style="color: #717171;">{{item.cm_desc}}</text></view>
+        <van-divider dashed />
+      </view>
+    </van-panel>
+
+  </view>
+  <view class="nomore" :wx-if="noMore"><text style="color: #717171;">没有更多了</text></view>
+</view>
+
+<van-tabbar active="{{ active }}" bind:change="onChange">
+
+  <van-button type="danger" block style="width:100%;margin-top:20rpx" round bindtap="handleBuyBtnClick">
+    <van-dialog id="van-dialog">
+    </van-dialog>立即购买
+  </van-button>
+
+</van-tabbar>

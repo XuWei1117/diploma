@@ -1,0 +1,28 @@
+<!--pages/personalCenter/index.wxml-->
+<view class="header">
+
+      <van-button custom-style="border-radius:50%;width:200rpx;height:200rpx;" wx:if="{{!userInfo}}"  class="login_btn"  bindtap="login">授权登录</van-button>
+
+  <view class="root" wx:else>
+    <image class="touxiang" src="{{userInfo.avatarUrl}}"></image>
+    <text class="nicheng">{{userInfo.nickName}}</text>
+    <text class="login_out" bindtap="loginOut">退出登录</text>
+  </view>
+</view>
+<view wx:if="{{userInfo}}">
+  <view class="item" bindtap="getMyComment">
+    <text>我的评价</text>
+    <view class="right_arrow"></view>
+  </view>
+</view>
+
+<view class="item">
+  <button class="button" open-type="feedback">反馈建议</button>
+  <view class="right_arrow"></view>
+</view>
+<view class="item">
+  <button class="button" open-type="contact">在线客服</button>
+  <view class="right_arrow"></view>
+</view>
+
+

@@ -1,0 +1,64 @@
+{
+  "pages": [
+    "pages/authorization/index",
+    "pages/home/index",
+    "pages/homeV2/index",
+    "pages/personalCenter/index",
+    "pages/details/index",
+    "pages/courses/index",
+    "pages/list-detail/index",
+    "pages/search/index",
+    "pages/video1/index",
+    "pages/news1/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fafafa",
+    "navigationBarTitleText": "未来教育",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "selectedIconPath": "./assets/菜单导航.png",
+        "iconPath": "./assets/菜单导航.png"
+      },
+      {
+        "pagePath": "pages/homeV2/index",
+        "text": "课程",
+        "selectedIconPath": "./assets/系统单页.png",
+        "iconPath": "./assets/系统单页.png"
+      },
+      {
+        "pagePath": "pages/personalCenter/index",
+        "text": "我的",
+        "selectedIconPath": "./assets/用户管理.png",
+        "iconPath": "./assets/用户管理.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-panel": "@vant/weapp/panel/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-card": "@vant/weapp/card/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-divider": "@vant/weapp/divider/index"
+
+  },
+  "sitemapLocation": "sitemap.json"
+}

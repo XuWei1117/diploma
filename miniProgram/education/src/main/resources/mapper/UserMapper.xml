@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.education.mapper.UserMapper">
+    <insert id="login" parameterType="com.school.education.domain.User">
+        insert into user values (null,#{u_name},#{u_gender},#{u_newLogin},#{u_city},#{u_province},#{u_img})
+    </insert>
+    <update id="updateById" parameterType="com.school.education.domain.User">
+        update user set u_newLogin=#{u_newLogin} where u_id = #{u_id}
+    </update>
+    <select id="selectByOpenId" resultType="com.school.education.domain.User" parameterType="string">
+        select * from user where u_openId = #{u_openId}
+    </select>
+    <select id="selectByName" resultType="com.school.education.domain.User" parameterType="string">
+        select * from user where u_name = #{u_name}
+    </select>
+    <!--修改昵称-->
+    <update id="updateNameById" parameterType="com.school.education.domain.User">
+        update user set u_name=#{u_name} where u_id = #{u_id}
+    </update>
+    <!--修改省份-->
+    <update id="updateProvinceById" parameterType="com.school.education.domain.User">
+        update user set u_province=#{u_province} where u_id = #{u_id}
+    </update>
+    <!--修改城市-->
+    <update id="updateCityById" parameterType="com.school.education.domain.User">
+        update user set u_city=#{u_city} where u_id = #{u_id}
+    </update>
+
+</mapper>

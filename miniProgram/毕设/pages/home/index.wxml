@@ -1,0 +1,43 @@
+<!--pages/home/index.wxml-->
+<view>
+
+  <van-search class="jianbian"
+  disabled
+  value="{{ value }}"
+  shape="round"
+  background="#f0df65"
+  placeholder="请输入搜索关键词"
+  bind:tap="handleSearchClick"
+/>
+
+
+<!-- 轮播图 -->
+<swiper class="swiper"	indicator-dots autoplay circular>
+<block wx:for="{{swiperData}}" wx:key="this">
+<swiper-item class="swiper-item"> 
+<image bindtap="handleSwiperClick" data-imgDetail="{{item}}" bindload="handleSwiperImageLoaded" mode="widthFix" class="swiper-image" src="{{item.carousel}}"></image>
+</swiper-item>
+</block>
+</swiper>
+</view>
+
+
+
+
+<view class="recommend" wx:for="{{RecommendData}}" wx:key="c_id">
+  <view  class="recommend-list">
+    <image bindtap="handleImgClick" data-imgDetail="{{item}}"  class="image"  mode="aspectFit" src="{{item.c_img}}"></image>
+  </view>
+   <view class="img-desc">{{item.c_name}}</view>
+</view>
+
+<view class="info">
+  <text class="allNews">新闻头条</text> 
+  <view wx:for="{{NewsData}}" wx:key="n_id" class="content">
+   <text bindtap="handleNewsClick" data-imgDetail="{{item}}" >{{item.n_title}}</text>
+   <view class="info-date clear_fix">{{item.n_date}}</view>
+  </view>
+  
+
+
+</view>

@@ -1,0 +1,56 @@
+/* pages/list-detail/index.wxss */
+page {
+  background-color: #f6f6f5;
+}
+.touxiang {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  vertical-align: middle;
+  overflow: hidden;
+  margin-left: 30rpx;
+}
+.image {
+  width: 100%;
+}
+.cs_desc {
+  /* margin-top: 10rpx; */
+  margin: 30rpx;
+  border-radius: 20rpx;
+  background-color: #fff;
+}
+.t_desc {
+  margin: 30rpx;
+  border-radius: 20rpx;
+  background-color: #fff;
+}
+.teacher-text {
+  font-size: large;
+  color: #313131;
+  font-weight: 700;
+}
+.class-text {
+  font-size: large;
+  color: #313131;
+  font-weight: 700;
+  margin-top: 10rpx;
+}
+.word-wrap {
+  color: #717171;
+  text-indent:2em
+}
+.pinglun {
+  width: 100%;
+}
+.p_time {
+  display: inline-block;
+  margin-bottom: 20rpx;
+  font-size: x-small;
+  color: #717171;
+  margin-right: 30rpx;
+  margin-top: 20rpx;
+}
+.nomore {
+  text-align: center;
+  margin-bottom: 1000rpx;
+}

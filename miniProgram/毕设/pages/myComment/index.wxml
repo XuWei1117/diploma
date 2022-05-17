@@ -1,0 +1,18 @@
+<!-- 我的评价页面 -->
+<!-- <view class="detail-container" data-id="user_id" wx:for="{{cardData}}">
+    {{cardData.cs_name}}
+    {{cardData.cm_date}}
+    {{cardData.cm_desc}}
+    
+</view> -->
+<view  class="detail-container" wx:for="{{cardData}}">
+  <view class="detail-card">
+        <view><text class="cs_name">{{item.cs_name}}</text></view>
+        <text class="pub-time">{{item.cm_date}}</text>
+        <text class="pub-time">{{item.cm_desc}}</text>
+    </view>
+    
+</view>
+
+
+

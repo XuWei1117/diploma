@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.management1.mapper.CommentMapper">
+    <select id="selectAllComment" resultType="com.school.management1.domain.vo.CommentVO" parameterType="string">
+        select c.cm_id as comment_id,u.u_name as user_name,c.cm_desc as comment_desc,c.cm_date as comment_date,cs.cs_name as course_name
+        from comment c,course cs,user u
+        where c.course_id = cs.cs_id and c.user_id=u.u_id
+        <if test="condition != null">
+          <!--'%'||#{listOption.WORKPIECE_CODE}||'%'-->
+            and (u.u_name like #{conditionNew} or cs.cs_name like #{conditionNew})
+        </if>
+        order by c.cm_date desc
+    </select>
+    <delete id="deleteComment" parameterType="int">
+        delete from comment where cm_id = #{cm_id}
+    </delete>
+
+
+
+
+</mapper>

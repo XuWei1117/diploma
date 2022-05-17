@@ -1,0 +1,7 @@
+<view class="new-info">
+<view class="news-title">{{newsDetialData.n_title}}</view>
+<view class="detail-container" wx:key="id" data-id="{{item.n_id}}"> 
+    
+    {{newsDetialData.n_detail1}}
+</view>
+</view>

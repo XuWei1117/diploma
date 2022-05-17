@@ -1,0 +1,74 @@
+/* pages/personalCenter/index.wxss */
+
+/* pages/details/index.wxss */
+page{
+  background-color: #f6f6f5;
+  }
+  
+  .detail-container{
+  display: flex;
+  flex-direction: column;
+  }
+  .pub-desc{
+    margin-top: 30rpx;
+  }
+  .detail-card{
+    padding: 25rpx;
+    margin-bottom: 30rpx;
+    background-color: #fff;
+    margin: 10rpx;
+    border-radius: 10rpx;
+  }
+  .cs_name{
+    font-size:large;
+    color: #313131;
+    font-weight: 700;
+  }
+  .pub-time{
+    display: inline-block;
+    margin-top: 10rpx;
+    margin-bottom: 20rpx;
+    font-size:30rpx ;
+    color: #717171;
+  }
+  .detail-card-bottom{
+    display: flex;
+    justify-content: space-between;
+  }
+  .detail-card-bottom-profile{
+    display: flex;
+    justify-content: space-between;
+  }
+  .profile-item{
+    width: 50rpx;
+    height: 50rpx;
+  border-radius: 50rpx; 
+   
+  
+  }
+  .techear-name{
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: x-small;
+   color: #a7a6a7;
+  }
+  
+  .img{
+    width: 50rpx;
+    height: 50rpx;
+    border-radius: 50%;
+    overflow:hidden;
+    
+  }
+  .pay-cash{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+  }
+  .big-word{
+    color: #e75d56;
+  }
+  .small-word{
+    font-size: xx-small;
+    color: #aaaaaa;
+  }

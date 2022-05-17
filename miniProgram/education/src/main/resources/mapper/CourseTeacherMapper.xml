@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.education.mapper.CourseTeacherMapper">
+
+    <select id="selectCourse" parameterType="int" resultType="com.school.education.domain.CourseTeacher">
+        select * from course,teacher where course.cat_id = #{cat_id} and teacher.t_id = course.te_id;
+    </select>
+    <select id="selectCommand" resultType="com.school.education.domain.CourseTeacher">
+        select * from course,teacher where cs_hot = #{cs_hot} and teacher.t_id = course.te_id;
+    </select>
+
+    <select id="search" resultType="com.school.education.domain.CourseTeacher">
+        select * from course,teacher where teacher.t_id = course.te_id and (course.cs_name like #{course_name} or teacher.t_name like #{t_name})
+    </select>
+
+    <update id="updateSold" parameterType="int">
+        update course set sold = sold + 1 where cs_id = #{cs_id}
+    </update>
+    <update id="updateLimit" parameterType="int">
+        update course set limit_buy = limit_buy - 1 where cs_id = #{cs_id}
+    </update>
+    <select id="selectByCsId" resultType="com.school.education.domain.CourseTeacher">
+        select * from course where cs_id = #{cs_id}
+    </select>
+    <select id="getHot" resultType="com.school.education.domain.CourseTeacher" >
+        select * from course,teacher where cs_hot = 1
+    </select>
+
+
+</mapper>

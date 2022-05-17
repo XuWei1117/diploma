@@ -1,0 +1,60 @@
+<van-tabs sticky swipeable active="{{ active }}">
+  <van-tab title="已支付">
+    <block wx:if="{{payData.length>0}}">
+      <view wx:for="{{payData}}" wx:key="r_id">
+        <van-card num="1" price="{{item.r_price}}" desc="{{item.t_desc}}" title="{{item.r_name}}" thumb="{{ item.r_img }}">
+          <view slot="footer">
+            订单编号：{{item.r_number}}
+            <van-button bindtap="playVideo1" data-r_id="{{item.r_id}}"  round size="mini" type="primary">去听课</van-button>
+          </view>
+        </van-card>
+      </view>
+    </block>
+    <block wx:else>
+      <van-empty description="暂无订单" />
+    </block>
+
+
+  </van-tab>
+  <van-tab title="未支付">
+    <!-- wx:if="{{finishedData.length>0}}" -->
+    <!-- <view   wx:for="{{finishedData}}" wx:key="r_id" >
+   <van-card
+  num="1"
+  price="{{item.r_price}}"
+  desc="{{item.t_desc}}"
+  title="{{item.r_name}}"
+  thumb="{{ item.t_img }}"
+>
+ <view slot="footer">
+   {{item.r_number}}
+  </view>
+</van-card>
+    </view>
+    <view wx:elif>
+      
+      <van-empty description="暂无订单" />
+    </view>
+    </view>
+       -->
+
+
+    <block wx:if="{{finishedData.length>0}}">
+      <view wx:for="{{finishedData}}" wx:key="r_id">
+        <van-card num="1" price="{{item.r_price}}" desc="{{item.t_desc}}" title="{{item.r_name}}" thumb="{{ item.r_img }}">
+          <view slot="footer">
+            订单编号：{{item.r_number}}
+
+            <van-dialog id="van-dialog"></van-dialog>
+            <van-button bindtap="goPayBtnClick" style="margin-right: 20rpxs;" data-id="{{item.r_id}}" round size="mini" type="danger">去支付</van-button>
+            <van-button bindtap="deleteOrder" data-id="{{item.r_id}}" round size="mini" type="danger">删除</van-button>
+          </view>
+        </van-card>
+      </view>
+    </block>
+    <block wx:else>
+      <van-empty description="暂无订单" />
+    </block>
+  </van-tab>
+</van-tabs>
+<van-toast id="van-toast" />

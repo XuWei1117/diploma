@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.management1.mapper.OrderMapper">
+    <select id="orderListPage" resultType="com.school.management1.domain.vo.OrderVO">
+        select r.r_id as r_id,
+               r.r_number as r_number,
+               r.r_status as r_status,
+               c.cs_name as r_name,
+               c.cs_price as r_price,
+               u.u_name as user_name,
+               t.t_name as r_teacher
+        from r_order r,course c,user u,teacher t
+        where r.course_id = c.cs_id and r.user_id = u.u_id and r.r_teacher = t.t_id
+        <if test="condition != null">
+          <!--课程名称 购买者姓名 老师姓名-->
+          <!--'%'||#{condition}||'%'-->
+            and (c.cs_name like #{conditionNew} or u.u_name like #{conditionNew} or t.t_name like #{conditionNew})
+        </if>
+        <if test="r_status != null">
+            and r_status = #{r_status}
+        </if>
+        ORDER BY r_number desc
+    </select>
+
+    <update id="payOrder" parameterType="com.school.management1.domain.vo.OrderVO">
+        update r_order set r_status = 1 where r_id = #{r_id}
+    </update>
+
+    <delete id="deleteOrder" parameterType="int">
+        delete from r_order where r_id = #{r_id}
+    </delete>
+
+
+
+
+</mapper>

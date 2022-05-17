@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.education.mapper.NewsMapper">
+    <select id="selectAllNews" resultType="com.school.education.domain.News">
+        select n_id,n_title,n_date from news
+    </select>
+    <select id="selectNewsDetail" resultType="com.school.education.domain.News" parameterType="int">
+        select n_title,n_detail1 from news where n_id = #{n_id}
+    </select>
+
+</mapper>

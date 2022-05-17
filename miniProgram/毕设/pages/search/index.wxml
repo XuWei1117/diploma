@@ -1,0 +1,43 @@
+<!--pages/search/index.wxml-->
+<van-search
+  value="{{ searchData }}"
+  placeholder="请输入搜索关键词"
+  use-action-slot
+  bind:change="onChange"
+>
+  <view slot="action" bind:tap="onSearch">搜索</view>
+</van-search>
+
+<!-- 搜索历史 -->
+<view wx:if="{{cardData.length ===0}}">
+  <van-cell title="搜索历史" >
+</van-cell>
+
+<van-cell bind:tap="handleHistoryData" data-name="{{item}}" wx:for="{{historyData}}" wx:key="index" title="{{item}}" >
+  <vant-button type="primary" name="close"  data-index="{{index}}" catch:tap="deleteHistoryData">删除</vant-button>
+</van-cell >
+
+ 
+ </view>
+
+
+ <!-- content -->
+<view  class="detail-container" wx:for="{{cardData}}" wx:key="id" bindtap="showCourse" data-c_id="{{item.cs_id}}">
+  <view class="detail-card">
+<view><text class="cs_name">{{item.cs_name}}</text></view>
+<text class="pub-time">{{item.cs_time}}</text>
+<view class="detail-card-bottom">
+<view class="detail-card-bottom-profile">
+<view class="profile-item">
+<image class="img"  src="{{item.t_img}}"></image>
+</view>
+<view class="techear-name">{{item.t_name}} </view>
+
+</view>
+<view class="pay-cash">
+<view class="big-word">¥{{item.cs_price}}</view>
+<view class="small-word">限售900 已售768</view>
+</view>
+</view>
+</view>
+</view>
